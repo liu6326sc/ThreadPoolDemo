@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		99CCC03C19F49BED004FD494 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99CCC03B19F49BED004FD494 /* main.cpp */; };
+		99CCC04719F4AAB0004FD494 /* CTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99CCC04519F4AAB0004FD494 /* CTask.cpp */; };
+		99CCC04A19F4ADCE004FD494 /* CThreadPool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99CCC04819F4ADCE004FD494 /* CThreadPool.cpp */; };
+		99CCC04D19F4B41E004FD494 /* TestTask.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 99CCC04B19F4B41E004FD494 /* TestTask.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,12 @@
 /* Begin PBXFileReference section */
 		99CCC03819F49BED004FD494 /* ThreadPoolDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ThreadPoolDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		99CCC03B19F49BED004FD494 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		99CCC04519F4AAB0004FD494 /* CTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CTask.cpp; sourceTree = "<group>"; };
+		99CCC04619F4AAB0004FD494 /* CTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTask.h; sourceTree = "<group>"; };
+		99CCC04819F4ADCE004FD494 /* CThreadPool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CThreadPool.cpp; sourceTree = "<group>"; };
+		99CCC04919F4ADCE004FD494 /* CThreadPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CThreadPool.h; sourceTree = "<group>"; };
+		99CCC04B19F4B41E004FD494 /* TestTask.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TestTask.cpp; sourceTree = "<group>"; };
+		99CCC04C19F4B41E004FD494 /* TestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTask.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +67,12 @@
 			isa = PBXGroup;
 			children = (
 				99CCC03B19F49BED004FD494 /* main.cpp */,
+				99CCC04519F4AAB0004FD494 /* CTask.cpp */,
+				99CCC04619F4AAB0004FD494 /* CTask.h */,
+				99CCC04819F4ADCE004FD494 /* CThreadPool.cpp */,
+				99CCC04919F4ADCE004FD494 /* CThreadPool.h */,
+				99CCC04B19F4B41E004FD494 /* TestTask.cpp */,
+				99CCC04C19F4B41E004FD494 /* TestTask.h */,
 			);
 			path = ThreadPoolDemo;
 			sourceTree = "<group>";
@@ -118,7 +133,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99CCC04D19F4B41E004FD494 /* TestTask.cpp in Sources */,
 				99CCC03C19F49BED004FD494 /* main.cpp in Sources */,
+				99CCC04A19F4ADCE004FD494 /* CThreadPool.cpp in Sources */,
+				99CCC04719F4AAB0004FD494 /* CTask.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
