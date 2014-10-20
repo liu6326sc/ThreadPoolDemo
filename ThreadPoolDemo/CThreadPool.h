@@ -15,6 +15,8 @@
 #include <pthread.h>
 #include "CTask.h"
 using namespace std;
+
+/**任务优先级*/
 enum PRIORITY
 {
     NORMAL,
@@ -24,6 +26,7 @@ enum PRIORITY
 class CThreadPool
 {
 public:
+    
     /**
      *构造方法
      */
@@ -33,19 +36,19 @@ public:
      *把任务添加到任务队列中
      *@param task 任务执行单元
      */
-    int AddTask(CTask *task);
+    int addTask(CTask *task);
     
     /**
      *优先级添加队列
      *@param task 任务队列
      *@param priority 任务优先级
      */
-    int AddTask(CTask*task,PRIORITY priority);
+    int addTask(CTask*task,PRIORITY priority);
     
     /**
      *使线程池中的线程退出
      */
-    int StopAll();
+    int stopAll();
     
     /**
      * 获取当前任务队列中的任务数
@@ -58,18 +61,18 @@ public:
     static CThreadPool* sharedTheadPoll();
     
 protected:
+    
     /**
      *新线程的线程回调函数
      */
     static void* ThreadFunc(void * threadData);
     
-    static int MoveToIdle(pthread_t tid);       /** 线程执行结束后，把自己放入到空闲线程中 */
-    static int MoveToBusy(pthread_t tid);       /** 移入到忙碌线程中去 */
-    
     /**
      *创建线程池中的线程
      */
-    int Create();
+    int create();
+    static int moveToIdle(pthread_t tid);       /** 线程执行结束后，把自己放入到空闲线程中 */
+    static int moveToBusy(pthread_t tid);       /** 移入到忙碌线程中去 */
     
     
 private:

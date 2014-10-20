@@ -24,7 +24,7 @@ int main()
     for(int i = 0; i < 20; i++)
     {
         //sleep(1);
-        threadPool->AddTask(&taskObj);
+        threadPool->addTask(&taskObj);
     }
     sleep(1);
 	for(int i = 0; i < 20; i++)
@@ -33,7 +33,7 @@ int main()
         TestTask* task = new TestTask();
         char ss [] = "lalallalalalalala";
         task -> SetData((void*)ss);
-		threadPool->AddTask(task,HIGH);
+		threadPool->addTask(task,HIGH);
 	}
     /************************************************************************************/
 	
@@ -42,7 +42,7 @@ int main()
 		printf("there are still %d tasks need to handle/n", threadPool->getTaskSize());
 		if (threadPool->getTaskSize() == 0)
 		{
-			if (threadPool->StopAll() == -1)
+			if (threadPool->stopAll() == -1)
 			{	
 				printf("Now I will exit from main/n");
 				exit(0);

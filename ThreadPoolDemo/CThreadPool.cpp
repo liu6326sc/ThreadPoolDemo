@@ -22,7 +22,7 @@ CThreadPool::CThreadPool(int threadNum)
 {
     printf("The number of thread is %d \n",threadNum);
     this->m_iThreadNum = threadNum;
-    Create();
+    create();
 }
 
 /**
@@ -70,7 +70,7 @@ void* CThreadPool::ThreadFunc(void* threadData)
 /**
  * 往任务队列里边添加任务并发出线程同步信号
  */
-int CThreadPool::AddTask(CTask *task)
+int CThreadPool::addTask(CTask *task)
 {
     pthread_mutex_lock(&m_pthreadMutex);
     this->m_vecTaskQue.push_back(task);
@@ -79,7 +79,10 @@ int CThreadPool::AddTask(CTask *task)
     return 0;
 }
 
-int CThreadPool::AddTask(CTask *task, PRIORITY priority)
+/**
+ * 往任务队列里边添加优先级任务并发出线程同步信号
+ */
+int CThreadPool::addTask(CTask *task, PRIORITY priority)
 {
     pthread_mutex_lock(&m_pthreadMutex);
     if (priority == NORMAL)
@@ -98,7 +101,7 @@ int CThreadPool::AddTask(CTask *task, PRIORITY priority)
 /**
  * 创建线程
  */
-int CThreadPool::Create()
+int CThreadPool::create()
 {
     pthread_id = (pthread_t*)malloc(sizeof(pthread_t) * m_iThreadNum);
     for(int i = 0; i < m_iThreadNum; i++)
@@ -111,7 +114,7 @@ int CThreadPool::Create()
 /**
  * 停止所有线程
  */
-int CThreadPool::StopAll()
+int CThreadPool::stopAll()
 {
     /** 避免重复调用 */
     if (shutdown)
