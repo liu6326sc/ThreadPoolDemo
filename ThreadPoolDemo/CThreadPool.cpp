@@ -10,7 +10,7 @@
 
 static CThreadPool * instence;
 
-vector<CTask*> CThreadPool::m_vecTaskList;         //任务列表
+deque<CTask*> CThreadPool::m_vecTaskQue;         //任务列表
 bool CThreadPool::shutdown = false;
 pthread_mutex_t CThreadPool::m_pthreadMutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t CThreadPool::m_pthreadCond = PTHREAD_COND_INITIALIZER;
@@ -34,7 +34,7 @@ void* CThreadPool::ThreadFunc(void* threadData)
     while (1)
     {
         pthread_mutex_lock(&m_pthreadMutex);
-        while (m_vecTaskList.size() == 0 && !shutdown)
+        while (m_vecTaskQue.size() == 0 && !shutdown)
         {
             pthread_cond_wait(&m_pthreadCond, &m_pthreadMutex);
         }
@@ -47,16 +47,16 @@ void* CThreadPool::ThreadFunc(void* threadData)
         }
         
         printf("tid %lu run\n", (unsigned long)tid);
-        vector<CTask*>::iterator iter = m_vecTaskList.begin();
+        deque<CTask*>::iterator iter = m_vecTaskQue.begin();
         
         /**
          * 取出一个任务并处理之
          */
         CTask* task = *iter;
-        if (iter != m_vecTaskList.end())
+        if (iter != m_vecTaskQue.end())
         {
             task = *iter;
-            m_vecTaskList.erase(iter);
+            m_vecTaskQue.erase(iter);
         }
         
         pthread_mutex_unlock(&m_pthreadMutex);
@@ -73,7 +73,23 @@ void* CThreadPool::ThreadFunc(void* threadData)
 int CThreadPool::AddTask(CTask *task)
 {
     pthread_mutex_lock(&m_pthreadMutex);
-    this->m_vecTaskList.push_back(task);
+    this->m_vecTaskQue.push_back(task);
+    pthread_mutex_unlock(&m_pthreadMutex);
+    pthread_cond_signal(&m_pthreadCond);
+    return 0;
+}
+
+int CThreadPool::AddTask(CTask *task, PRIORITY priority)
+{
+    pthread_mutex_lock(&m_pthreadMutex);
+    if (priority == NORMAL)
+    {
+        this->m_vecTaskQue.push_back(task);
+    }
+    else
+    {
+        this->m_vecTaskQue.push_front(task);
+    }
     pthread_mutex_unlock(&m_pthreadMutex);
     pthread_cond_signal(&m_pthreadCond);
     return 0;
@@ -128,7 +144,7 @@ int CThreadPool::StopAll()
  */
 int CThreadPool::getTaskSize()
 {
-    return (int) m_vecTaskList.size();
+    return (int) m_vecTaskQue.size();
 }
 
 /**

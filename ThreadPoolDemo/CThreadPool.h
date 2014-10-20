@@ -10,12 +10,16 @@
 #define __ThreadPoolDemo__CThreadPool__
 
 #include <stdio.h>
-#include <vector>
+#include <deque>
 #include <string>
 #include <pthread.h>
 #include "CTask.h"
 using namespace std;
-
+enum PRIORITY
+{
+    NORMAL,
+    HIGH
+};
 
 class CThreadPool
 {
@@ -30,6 +34,13 @@ public:
      *@param task 任务执行单元
      */
     int AddTask(CTask *task);
+    
+    /**
+     *优先级添加队列
+     *@param task 任务队列
+     *@param priority 任务优先级
+     */
+    int AddTask(CTask*task,PRIORITY priority);
     
     /**
      *使线程池中的线程退出
@@ -62,7 +73,7 @@ protected:
     
     
 private:
-    static 	vector<CTask*> m_vecTaskList;     /** 任务列表 */
+    static 	deque<CTask*> m_vecTaskQue;     /** 任务列表 */
     static	bool shutdown;                    /** 线程退出标志 */
     int 	m_iThreadNum;                     /** 线程池中启动的线程数 */
     pthread_t	*pthread_id;

@@ -7,9 +7,11 @@
 //
 
 #include "TestTask.h"
+#include <unistd.h>
 int TestTask::Run()
 {
     printf("The task is doing of object is %s",this ->m_ptrData);
+    sleep(1);
     return 1;
     
 }

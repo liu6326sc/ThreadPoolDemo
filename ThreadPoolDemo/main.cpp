@@ -15,7 +15,7 @@ int main()
 {
 	TestTask taskObj;
 	
-	char szTmp[] = "this is the first thread running";
+	char szTmp[] = "this is the NORMAL thread ";
 	taskObj.SetData((void*)szTmp);
     CThreadPool* threadPool = CThreadPool::sharedTheadPoll();
     
@@ -30,7 +30,10 @@ int main()
 	for(int i = 0; i < 20; i++)
 	{
         sleep(1);
-		threadPool->AddTask(&taskObj);
+        TestTask* task = new TestTask();
+        char ss [] = "lalallalalalalala";
+        task -> SetData((void*)ss);
+		threadPool->AddTask(task,HIGH);
 	}
     /************************************************************************************/
 	

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>099F69BC-33EA-4F2F-95B8-FA577C9E04AA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ThreadPoolDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C05148A31A4F307D840B0F65C7E74FABD2E3CE56</key>
+		<string>https://github.com/liu6326sc/ThreadPoolDemo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ThreadPoolDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C05148A31A4F307D840B0F65C7E74FABD2E3CE56</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/liu6326sc/ThreadPoolDemo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C05148A31A4F307D840B0F65C7E74FABD2E3CE56</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C05148A31A4F307D840B0F65C7E74FABD2E3CE56</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ThreadPoolDemo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
