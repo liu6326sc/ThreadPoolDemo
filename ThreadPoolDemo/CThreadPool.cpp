@@ -34,6 +34,7 @@ void* CThreadPool::ThreadFunc(void* threadData)
     while (1)
     {
         pthread_mutex_lock(&m_pthreadMutex);
+        //没有任务时候休眠线程
         while (m_vecTaskQue.size() == 0 && !shutdown)
         {
             pthread_cond_wait(&m_pthreadCond, &m_pthreadMutex);
@@ -42,11 +43,11 @@ void* CThreadPool::ThreadFunc(void* threadData)
         if (shutdown)
         {
             pthread_mutex_unlock(&m_pthreadMutex);
-            printf("thread %lu will exitx",(unsigned long) pthread_self());
+            printf("thread %lu will exitx\n",(unsigned long) pthread_self());
             pthread_exit(NULL);
         }
         
-        printf("tid %lu run\n", (unsigned long)tid);
+       // printf("tid %lu run\n", (unsigned long)tid);
         deque<CTask*>::iterator iter = m_vecTaskQue.begin();
         
         /**
@@ -62,7 +63,7 @@ void* CThreadPool::ThreadFunc(void* threadData)
         pthread_mutex_unlock(&m_pthreadMutex);
         
         task->Run(); /** 执行任务 */
-        printf("tid:%lu idle\n", (unsigned long)tid);
+        printf("tid:%lu is idle\n", (unsigned long)tid);
     }
     return (void*)0;
 }

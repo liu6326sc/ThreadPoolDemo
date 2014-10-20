@@ -15,7 +15,7 @@ int main()
 {
 	TestTask taskObj;
 	
-	char szTmp[] = "this is the NORMAL thread ";
+	char szTmp[] = "this is the NORMAL thread\n ";
 	taskObj.SetData((void*)szTmp);
     CThreadPool* threadPool = CThreadPool::sharedTheadPoll();
     
@@ -26,7 +26,7 @@ int main()
         //sleep(1);
         threadPool->addTask(&taskObj);
     }
-    sleep(1);
+    sleep(10);
 	for(int i = 0; i < 20; i++)
 	{
         sleep(1);
@@ -37,20 +37,20 @@ int main()
 	}
     /************************************************************************************/
 	
-	while(1)
-	{
-		printf("there are still %d tasks need to handle/n", threadPool->getTaskSize());
-		if (threadPool->getTaskSize() == 0)
-		{
-			if (threadPool->stopAll() == -1)
-			{	
-				printf("Now I will exit from main/n");
-				exit(0);
-			}
-		}
-		sleep(20000);
-	}
-	
+//	while(1)
+//	{
+//		printf("there are still %d tasks need to handle/n", threadPool->getTaskSize());
+//		if (threadPool->getTaskSize() == 0)
+//		{
+//			if (threadPool->stopAll() == -1)
+//			{	
+//				printf("Now I will exit from main/n");
+//				exit(0);
+//			}
+//		}
+//		//sleep(20000);
+//	}
+    sleep(1000000);
 	return 0;
 }
 
